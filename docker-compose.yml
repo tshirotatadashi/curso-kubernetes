@@ -1,0 +1,29 @@
+version: '3.0'
+services:
+  db:
+    image: mysql:5.7.19
+    container_name: db-loja
+    environment:
+      - MYSQL_DATABASE=loja
+      - MYSQL_USER=root
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - ./volume/volume_mysql:/var/lib/mysql
+    networks:
+      - rede-tadashi
+  web:
+    build:
+      dockerfile: ./web.dockerfile
+      context: .
+    image: tshirotatadashi/aplicacao-loja
+    container_name: aplicacao-loja
+    ports:
+      - 8080:80
+    networks:
+      - rede-tadashi
+    depends_on:
+      - db
+
+networks:
+  rede-tadashi:
+    driver: bridge
