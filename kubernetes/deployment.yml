@@ -1,0 +1,15 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: aplicacao-deployment
+spec:
+  template: # Padrão do que será abstraído
+    metadata:
+      labels: # Etiqueta de identificação definindo o objeto abstraido
+        name: aplicacao-pod
+    spec:
+      containers:
+        - name: container-aplicacao-loja
+          image: tshirotatadashi/aplicacao-loja
+          ports:
+          - containerPort: 80

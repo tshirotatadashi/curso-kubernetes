@@ -1,0 +1,10 @@
+apiVersion: v1 # Vesão da API do Kubernetes que é responsável por esquematizar o objeto a ser criado
+kind: Pod # tipo do objeto que será criado no cluster que vai ser gerenciasdo pelo Kubernetes
+metadata:
+  name: aplicacao # Nome de identificação para o Pod que está sendo criado
+spec: # Especificação do que tem dentro do objeto
+  containers: # Array que especifia cos containers
+    - name: container-aplicacao-loja # Nome de identificação do container
+      image: tshirotatadashi/aplicacao-loja # Imagem a ser usada
+      ports:
+       - containerPort: 80
